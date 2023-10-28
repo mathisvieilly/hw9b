@@ -40,6 +40,9 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 
   const formData = new FormData(event.target);
+  if (!formData.get('title') || !formData.get('content')) {
+    return;
+  }
 
   fetch('/articles', {
     method: 'POST',
