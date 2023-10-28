@@ -21,7 +21,7 @@ app.get('/ex1', (req, res) => {
 });
 
 app.post('/ex1/order', upload.array(), (req, res) => {
-  res.send(`${req.body.name}, Thank you for your order. We will keep you posted on delivery statut at ${req.body.email}.`);
+  res.send(`${req.body.name}, Thank you for your order. We will keep you posted on delivery status at ${req.body.email}.`);
 });
 
 app.get('/ex2', (req, res) => {

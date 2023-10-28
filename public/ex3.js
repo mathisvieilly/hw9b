@@ -47,6 +47,7 @@ form.addEventListener('submit', event => {
   })
   .then((response) => response.text())
   .then((response) => {
+    form.reset();
     document.getElementById("response").innerText = response;
   });
 });

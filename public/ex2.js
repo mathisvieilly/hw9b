@@ -6,19 +6,11 @@ document.getElementById("call-api").addEventListener('click', () => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      name: "Sam",
+      name: "Mathis",
       countries: [
         {
-          name: "Italy",
-          year: 2022
-        },
-        {
-          name: "Ireland",
-          year: 2021
-        },
-        {
           name: "USA",
-          year: 2021
+          year: 2023
         }
       ]
     })

@@ -121,6 +121,7 @@ document.querySelector("form").addEventListener("submit", event => {
     method: 'POST',
     body: formData,
   }).then(response => response.text()).then(response => {
+    form.reset();
     document.getElementById("response").innerText = response;
   });
 });
