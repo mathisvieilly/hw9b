@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 const app = express();
 
@@ -25,8 +26,10 @@ app.get('/ex2', (req, res) => {
   res.sendFile(__dirname + '/views/ex2.html');
 });
 
-app.post('/api/countries', (req, res) => {
-
+app.post('/api/countries', jsonParser, (req, res) => {
+  const name = req.body.name;
+  const countries = req.body.countries;
+  res.send(`Your name is ${name} and you visited ${countries.length} countries. Keep traveling!`);
 });
 
 app.get('/ex3', (req, res) => {
