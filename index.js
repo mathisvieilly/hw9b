@@ -10,6 +10,8 @@ const upload = multer();
 app.use(express.static('public'));
 app.use(express.static('css'));
 
+const articles = [];
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
@@ -36,6 +38,18 @@ app.get('/ex3', (req, res) => {
   res.sendFile(__dirname + '/views/ex3.html');
 });
 
+app.post('/articles', upload.array(), (req, res) => {
+  let higherId = Math.max(...articles.map(article => article.id));
+  if (higherId === -Infinity) {
+    higherId = 0;
+  }
+  articles.push({
+    id: higherId + 1, // articles.length + 1,
+    title: req.body.title,
+    content: req.body.content
+  });
+  res.send(`New article added successfully with title ${req.body.title} and ID ${higherId + 1}`);
+});
 
 const listening = app.listen(process.env.PORT || 3000, () => {
     console.log(`App listening on port ${listening.address().port}`);
