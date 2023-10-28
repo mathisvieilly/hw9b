@@ -115,21 +115,12 @@ document.getElementById("content").appendChild(form);
 document.querySelector("form").addEventListener("submit", event => {
   event.preventDefault();
 
+  const formData = new FormData(event.target);
+
   fetch('/ex1/order', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: nameInput.input.value,
-      email: emailInput.input.value,
-      payment: paymentMethods.div.querySelector('input[type="radio"]:checked'),
-      promotions: checkPromotions.checked,
-      preferredLocations: preferredLocations.div.querySelector('select').value,
-    })
+    body: formData,
   }).then(response => response.text()).then(response => {
-    const text = document.createElement("p");
-    text.innerText = response;
-    document.getElementById("content").appendChild(text);
+    document.getElementById("response").innerText = response;
   });
 });
