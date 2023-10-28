@@ -16,7 +16,6 @@ app.get('/ex1', (req, res) => {
 });
 
 app.post('/ex1/order', (req, res) => {
-  console.log(req.body);
   res.send(`${req.body.name}, Thank you for your order. We will keep you posted on delivery statut at ${req.body.email}.`);
 });
 
